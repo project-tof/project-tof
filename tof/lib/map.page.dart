@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class MapPage extends StatefulWidget {
   @override
@@ -7,6 +8,7 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
+  String mapStyle;
   GoogleMapController mapController;
   Set<Marker> makers = new Set<Marker>();
   double lat = 45.521563;
@@ -14,6 +16,21 @@ class _MapPageState extends State<MapPage> {
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
+    try {
+      //print(mapStyle);
+      //mapController.setMapStyle(mapStyle);
+    } catch (erro) {
+      print(erro);
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    rootBundle
+        .loadString("assets/mapStyle.txt")
+        .then((value) => {mapStyle = value});
   }
 
   @override

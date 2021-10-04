@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tof/data.page.dart';
 import 'package:tof/initial.page.dart';
 import 'package:tof/newspaper.page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -38,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
   @override
@@ -54,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage>
         children: <Widget>[
           MapPage(),
           NewspaperPage(),
+          DataPage(),
           ProfilePage(),
         ],
         // If you want to disable swiping in tab the use below code
@@ -86,6 +88,12 @@ class _MyHomePageState extends State<MyHomePage>
                 Tab(
                   icon: FaIcon(
                     FontAwesomeIcons.newspaper,
+                    size: 24.0,
+                  ),
+                ),
+                Tab(
+                  icon: FaIcon(
+                    FontAwesomeIcons.chartBar,
                     size: 24.0,
                   ),
                 ),
